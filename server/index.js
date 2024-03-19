@@ -67,18 +67,15 @@ app.post("/auth/register", upload.single("picture"), register);
 app.post("/auth/lawregister", upload.single("picture"), lawregister);
 
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
-
-
-
-
 /*routes*/
 app.use("/auth", authRouts);
-app.use("/users", userRouts);
+app.use("/users",verifyToken, userRouts);
 app.use("/posts", postRouts);
 app.use('/search', searchRoutes);
-app.use('/lawyers', Lawyer);
+app.use('/lawyers',verifyToken, Lawyer);
 
 //mongoose
+
 
 const PORT = process.env.PORT || 3001;
 console.log(process.env.MONGO_URL);

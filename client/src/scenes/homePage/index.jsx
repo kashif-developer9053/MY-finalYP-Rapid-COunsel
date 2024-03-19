@@ -6,7 +6,7 @@ import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import AdvertWidget from "scenes/widgets/AdvertWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
-import TopLawyers from "components/TopLawyers";
+import ShowLawyers  from "scenes/lawerHome/ShowLaywers";
 
 // import SearchLawyers from 'scenes/widgets/SearchLawyers';
 
@@ -37,7 +37,7 @@ const HomePage = () => {
   return (
     <Box>
       <Navbar />
-      < TopLawyers />
+      < ShowLawyers />
       <Box
         width="100%"
         padding="2rem 6%"

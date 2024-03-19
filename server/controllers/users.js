@@ -12,6 +12,18 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const getAllUsers = async (req, res) => {
+  let token = req.header("Authorization");
+
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 export const getUserFriends = async (req, res) => {
   try {
     const { id } = req.params;

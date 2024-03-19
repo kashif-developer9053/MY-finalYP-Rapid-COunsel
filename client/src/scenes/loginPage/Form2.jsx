@@ -12,7 +12,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUserLogin, setLawyerLogin } from "state"; // Import the appropriate actions
+import { setLawyerLogin } from "state"; // Import the appropriate actions
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 
@@ -86,15 +86,14 @@ const Form = () => {
     });
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
-    if (loggedIn) {
-      // Determine the type of login and dispatch the appropriate action
-      const isUserLogin = isLogin; // Assuming 'login' represents user login
-      dispatch(
-        isUserLogin ? setUserLogin({ user: loggedIn.user, token: loggedIn.token }) : setLawyerLogin({ lawyer: loggedIn.lawyer, token: loggedIn.token })
-      );
-      navigate("/lawhome");
-    }
-  };
+
+  if (loggedIn) {
+    dispatch(
+      setLawyerLogin({ lawyer: loggedIn.lawyer, token: loggedIn.token })
+    );
+    navigate("/lawhome");
+  }
+};
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);

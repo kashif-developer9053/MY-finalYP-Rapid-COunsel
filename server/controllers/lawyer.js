@@ -1,15 +1,16 @@
 import Lawyer from "../models/lawyer.js";
 
 /* READ */
-export const getUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    // console.log(id);
-    const Lawyer = await Lawyer.findById(id);
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(404).json({ message: err.message });
-  }
+export const getLawyer = async (req, res) => {
+  
+    try {
+      const lawyers = await Lawyer.find();
+      res.json(lawyers);
+    } catch (error) {
+      console.error('Error fetching lawyers:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+ 
 };
 
 export const getUserFriends = async (req, res) => {

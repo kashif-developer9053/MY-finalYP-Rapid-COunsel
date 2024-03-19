@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import HomePage from "scenes/homePage";
 import Lawhome from "scenes/lawerHome";
-
+import LawyerCard from "scenes/lawerHome/LawyerCard"
 import LoginPage from "scenes/loginPage";
 import ProfilePage from "scenes/profilePage";
 import { useMemo } from "react";
@@ -38,6 +38,12 @@ function App() {
               path="/profile/:userId"
               element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
             />
+               <Route
+              path="/LawyerCard"
+              element={isAuth ? <LawyerCard /> : <Navigate to="/" />}
+            />
+
+
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
