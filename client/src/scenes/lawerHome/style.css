@@ -98,3 +98,8 @@
   letter-spacing: 1px;
   opacity: 0.8;
 }
+.lawyers{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

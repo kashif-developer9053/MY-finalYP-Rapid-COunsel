@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
-import './style.css'; // Assuming you save your CSS in a file named Card.css
+import './style.css';
 
-const LawyerCard = () => {
+const LawyerCard = ({ lawyer }) => {
+  console.log(lawyer)
   useEffect(() => {
+
+
+
+
     const handleMouseLeave = () => {
       const hoverElements = document.querySelectorAll('.hover');
       hoverElements.forEach(element => {
@@ -10,13 +15,11 @@ const LawyerCard = () => {
       });
     };
 
-    // Adding event listener to remove hover class on mouse leave
     const hoverElements = document.querySelectorAll('.hover');
     hoverElements.forEach(element => {
       element.addEventListener('mouseleave', handleMouseLeave);
     });
 
-    // Cleanup function to remove event listener
     return () => {
       hoverElements.forEach(element => {
         element.removeEventListener('mouseleave', handleMouseLeave);
@@ -27,16 +30,15 @@ const LawyerCard = () => {
   return (
     <div>
       <figure className="snip1336">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
+        <img src={lawyer.picturePath} alt={lawyer.firstName} />
         <figcaption>
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile-sample4" className="profile" />
-          <h2>Hans Down<span>Engineer</span></h2>
-          <p>I'm looking for something that can deliver a 50-pound payload of snow on a small feminine target. Can you suggest something? Hello...? </p>
+          <img src={lawyer.picturePath} alt={lawyer.firstName} className="profile" />
+          <h2>{`${lawyer.firstName} ${lawyer.lastName}`}<span>{lawyer.occupation}</span></h2>
+          <p>{lawyer.email}</p>
           <button className="follow">Learn More</button>
           <button className="info">Contact</button>
         </figcaption>
       </figure>
-     
     </div>
   );
 }

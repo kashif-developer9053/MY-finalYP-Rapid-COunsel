@@ -13,8 +13,7 @@ export const getUser = async (req, res) => {
 };
 
 export const getAllUsers = async (req, res) => {
-  let token = req.header("Authorization");
-
+  
   try {
     const users = await User.find();
     res.status(200).json(users);

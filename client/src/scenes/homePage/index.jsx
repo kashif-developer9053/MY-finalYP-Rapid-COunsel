@@ -4,7 +4,7 @@ import Navbar from "scenes/navbar";
 import UserWidget from "scenes/widgets/UserWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
-import AdvertWidget from "scenes/widgets/AdvertWidget";
+// import AdvertWidget from "scenes/widgets/AdvertWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
 import ShowLawyers  from "scenes/lawerHome/ShowLaywers";
 
@@ -35,9 +35,10 @@ const HomePage = () => {
   // }, []);
 
   return (
-    <Box>
+    <Box>         
+
       <Navbar />
-      < ShowLawyers />
+
       <Box
         width="100%"
         padding="2rem 6%"
@@ -47,6 +48,9 @@ const HomePage = () => {
       >
         {/* <ChatComponent /> */}
         {/* <ChatComponent /> */}
+
+
+
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={_id} picturePath={picturePath} />
          
@@ -57,10 +61,11 @@ const HomePage = () => {
         >
           <MyPostWidget picturePath={picturePath} />
           <PostsWidget userId={_id} />
+
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
-            <AdvertWidget />
+                  < ShowLawyers />
             <Box m="2rem 0" />
             {/* <FriendListWidget userId={_id} /> */}
             <FriendListWidget userId={_id} />
