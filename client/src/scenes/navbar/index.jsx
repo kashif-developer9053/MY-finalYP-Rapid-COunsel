@@ -115,7 +115,13 @@ const Navbar = () => {
           </IconButton>
           <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
             {" "}
-            <Message sx={{ fontSize: "25px", color: " #5514B4" }} />
+            <Message 
+              onClick={() => navigate("/home")}
+
+            sx={{ fontSize: "25px", color: " #5514B4" }}
+            
+            
+            />
           </motion.a>
           <motion.a whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
             {" "}
@@ -254,6 +260,7 @@ const Navbar = () => {
               <IconButton>
                 <Message sx={{ color: " #5514B4" }} />
                 <Typography
+
                   sx={{
                     color: "#5514B4",
                   }}

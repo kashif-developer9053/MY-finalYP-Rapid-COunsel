@@ -8,13 +8,6 @@ import PostsWidget from "scenes/widgets/PostsWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
 import ShowLawyers  from "scenes/lawerHome/ShowLaywers";
 
-// import SearchLawyers from 'scenes/widgets/SearchLawyers';
-
-// import ChatComponent from './ChatComponent';
-// import { useEffect,useState } from "react";
-// import io from 'socket.io-client';
-
-// const socket = io('http://localhost:3001');
 
 const HomePage = () => {
  
@@ -25,14 +18,6 @@ const HomePage = () => {
   const { _id, picturePath } = useSelector((state) => state.user);
 
 
-  // const [messages, setMessages] = useState(["arnab"]);
-
-  // useEffect(() => {
-  //   socket.on('message', (message) => {
-  //     setMessages((messages) => [...messages, message]);
-  //     socket.emit('sendMessage', {  message });
-  //   });
-  // }, []);
 
   return (
     <Box>         
@@ -46,15 +31,14 @@ const HomePage = () => {
         gap="0.5rem"
         justifyContent="space-between"
       >
-        {/* <ChatComponent /> */}
-        {/* <ChatComponent /> */}
-
-
-
+        
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={_id} picturePath={picturePath} />
          
         </Box>
+
+
+
         <Box
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}

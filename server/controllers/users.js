@@ -23,6 +23,19 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
+export const users = async (req, res) => {
+  
+  try {
+    const Users = await User.find();
+    res.json(Users);
+  } catch (error) {
+    console.error('Error fetching lawyers:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+
+};
+
+
 export const getUserFriends = async (req, res) => {
   try {
     const { id } = req.params;

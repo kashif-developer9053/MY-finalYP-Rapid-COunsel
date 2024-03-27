@@ -1,31 +1,30 @@
-import React, { useEffect } from 'react';
+// LawyerCard.js
+import React, { useState } from 'react';
+import axios from 'axios';
+import Chat from '../../components/Chat'; // Import the chat component
 import './style.css';
+import { useSelector } from "react-redux";
 
 const LawyerCard = ({ lawyer }) => {
-  console.log(lawyer)
-  useEffect(() => {
+  const [showChat, setShowChat] = useState(false);
+  const { _id } = useSelector((state) => state.user);
+  const userId = _id;
 
 
-
-
-    const handleMouseLeave = () => {
-      const hoverElements = document.querySelectorAll('.hover');
-      hoverElements.forEach(element => {
-        element.classList.remove('hover');
+  const openChat = async () => {
+    try {
+      const response = await axios.post('/chat/send', {
+        sender:  userId,
+        recipient: lawyer._id,   
+        message: 'Hi, I would like to discuss...'
       });
-    };
-
-    const hoverElements = document.querySelectorAll('.hover');
-    hoverElements.forEach(element => {
-      element.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    return () => {
-      hoverElements.forEach(element => {
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      });
-    };
-  }, []);
+      
+      
+      setShowChat(true);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+  };
 
   return (
     <div>
@@ -36,9 +35,10 @@ const LawyerCard = ({ lawyer }) => {
           <h2>{`${lawyer.firstName} ${lawyer.lastName}`}<span>{lawyer.occupation}</span></h2>
           <p>{lawyer.email}</p>
           <button className="follow">Learn More</button>
-          <button className="info">Contact</button>
+          <button className="info" onClick={openChat}>Contact</button>
         </figcaption>
       </figure>
+      {showChat && <Chat recipient={lawyer} />}
     </div>
   );
 }
